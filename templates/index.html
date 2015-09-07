@@ -1,0 +1,8 @@
+{% from 'aoran.html' import aoran %}
+{% include "head.html" %}
+<p>it works!</p>
+{% if checkins %}<p>Your checkins:</p>
+{% for c in checkins %}{% set type = c.venue.categories[0].name%}<p><code>{{c.venue.name}}, {{ aoran(type)}} {{type.lower()}} in {{c.exactContextLine}}</code></p>{% endfor %}
+{% else %}
+<a href="https://foursquare.com/oauth2/authenticate?client_id=OJ3TRONE1MDFBZPJMSTKFSMTJGNNIMDJM52TJFFSRTLIOQXS&response_type=token&redirect_uri=http://127.0.0.1:5000/auth">Authenticate with Foursquare</a>
+{% endif %}
